@@ -1,8 +1,9 @@
 
 import java.util.Scanner;
 import java.util.Random;
+import java.util.InputMismatchException;
 
-class game{
+class Game{
     public static void main(String[] args){
         String passwd = "HARSH";
 
@@ -22,6 +23,7 @@ class game{
                 System.out.println("You're in Option \n 1. For Rock Paper Scissor 2. For Guess The Number 3. For Quit The Game. ");
                 System.out.println("Choose Your Option " + passwd);
                 Scanner option = new Scanner(System.in);
+                try {
                     
                     int Option = option.nextInt();
                     
@@ -117,6 +119,7 @@ class game{
                         Random rand = new Random();
                         int computer = rand.nextInt(1,100);
                         // System.out.println(computer); // Use This To Get The Guess
+                        try {
 
                             Scanner scan = new Scanner(System.in);
                             int guess = 0 ;
@@ -148,6 +151,13 @@ class game{
                             }   
                             System.out.println("Thank You For Playing...  :)");
                             break;
+                        
+                        } catch (InputMismatchException e) {
+                            System.out.println("We're Unable To Get Your Number Resion :");
+                            System.out.println("    May You Have Entered A String, Sorry It's Not Allowed");
+                            System.out.println("    \t<Game Is Quiting!>");
+                            break;
+                        }
 
                         // For Exit
 
@@ -158,6 +168,12 @@ class game{
 
                         default: System.out.println("Something Went Wrong, May You Have Entered A Number Out Of Bound Please Contect to Harsh! ('_')");
                     }
+                
+                }
+                catch (InputMismatchException e) {
+                    System.out.println("\nWe're Unable To Get Your Option Resion :");
+                    System.out.println("    May You Have Entered A String It Is Not Allowed !");
+                }
             
             }
         }
